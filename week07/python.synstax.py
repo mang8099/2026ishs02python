@@ -1,6 +1,6 @@
 import seaborn as sns
 import numpy as np
-#import pandas as pd
+import pandas as pd
 
 df = sns.load_dataset('titanic')
 #df.head()
@@ -27,3 +27,11 @@ def get_IQR(data):
 
 print(df1.groupby(['sex','pclass'])['age'].apply(get_IQR))
 #-------------------------------------- Third commit
+df2 = sns.load_dataset('penguins')
+#print(df2.head())
+#print(df2.info())
+#print(df2.isna().sum())
+#print(df2['species'].value_counts())
+#print(df2.groupby('species')[['bill_length_mm','bill_depth_mm','flipper_length_mm','body_mass_g']].mean())
+#print(df2.groupby('species')[['bill_length_mm','bill_depth_mm','flipper_length_mm','body_mass_g']].apply(lambda x: x.fillna(x.mean())))
+#df2 = df2.groupby('species')[['bill_length_mm','bill_depth_mm','flipper_length_mm','body_mass_g']].apply(lambda x: x.fillna(x.mean()))
