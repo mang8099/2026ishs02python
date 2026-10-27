@@ -1,3 +1,5 @@
+from pydoc import describe
+
 import seaborn as sns
 import numpy as np
 import pandas as pd
@@ -47,3 +49,23 @@ import pandas as pd
 #print(df3['2022-06':'2022-06'])
 #print(df3.resample('7D').mean()) #7일 단위 평균/ 월을 원하면 D대신 ME 사용
 #------------------------------------------ fifth commit
+df4 = pd.read_csv('Uber.csv')
+#print(df4.info())
+#print(df4.head())
+#print(df4.describe())
+#print(df4.tail())
+df4['START_DATE*'] = pd.to_datetime(df4['START_DATE*'], errors='coerce')
+df4['END_DATE*'] = pd.to_datetime(df4['END_DATE*'], errors='coerce')
+df4 = df4.sort_values(['START_DATE*','END_DATE*'])
+print(df4.tail())
+#print(df4['CATEGORY*'].value_counts())
+#print(df4['START*'].value_counts())
+#print(df4['STOP*'].value_counts())
+print(df4.describe())
+print(df4[df4['MILES*'] == df4['MILES*'].max()])
+df4 = df4.drop(1155)
+print(df4['MILES*'].describe())
+df4['DURATION*'] = (df4['END_DATE*'] - df4['START_DATE*']).dt.total_seconds() / 60
+print(df4.info())
+print(df4.groupby(['CATEGORY*','PURPOSE*'])[['MILES*','DURATION*']].agg(['mean','std','count']))
+#----------------------------------------------------final commit of today
