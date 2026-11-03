@@ -19,3 +19,13 @@ import numpy as np
 #plt.legend()
 #plt.show()
 #---------------------------------- teacher's first commit
+df = pd.read_csv('German_credit.csv')
+#print(df.head())
+#print(df.info())
+#print(df['Age'].describe())
+#print(pd.cut(df['Age'], bins=8))
+#print(pd.cut(df['Age'], bins=8).reset_index().groupby('Age').size())
+ages = [10, 20, 30, 40, 50, 60, 70, 80]
+print(pd.cut(df['Age'], bins=ages))
+print(pd.cut(df['Age'], bins=ages, right=False))
+print(pd.cut(df['Age'], bins=ages).reset_index().groupby('Age').size())
